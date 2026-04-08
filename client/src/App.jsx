@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const CALCULATOR_API_URL = import.meta.env.VITE_CALCULATOR_API_URL || '/api/calculate'
+
 function toggleSign(expression) {
   if (!expression) {
     return '-'
@@ -75,7 +77,7 @@ function App() {
       }
 
       try {
-        const response = await fetch('/api/calculate', {
+        const response = await fetch(CALCULATOR_API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ expression })
